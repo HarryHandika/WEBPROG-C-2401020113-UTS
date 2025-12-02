@@ -9,20 +9,17 @@ class AnggotaController extends Controller
 {
     private $file = 'data/anggota.json';
 
-    // 🟢 Tampilkan semua anggota
     public function index()
     {
         $anggota = json_decode(Storage::get($this->file), true);
         return view('anggota.index', compact('anggota'));
     }
 
-    // 🟡 Form tambah anggota
     public function create()
     {
         return view('anggota.create');
     }
 
-    // 🔵 Simpan anggota baru ke JSON
     public function store(Request $request)
     {
         $anggota = json_decode(Storage::get($this->file), true);
@@ -40,7 +37,6 @@ class AnggotaController extends Controller
         return redirect('/anggota')->with('success', 'Anggota baru berhasil ditambahkan!');
     }
 
-    // 🟠 Form edit anggota
     public function edit($id)
     {
         $anggota = json_decode(Storage::get($this->file), true);
@@ -48,7 +44,6 @@ class AnggotaController extends Controller
         return view('anggota.edit', compact('data'));
     }
 
-    // 🟣 Update anggota
     public function update(Request $request, $id)
     {
         $anggota = json_decode(Storage::get($this->file), true);
@@ -66,7 +61,6 @@ class AnggotaController extends Controller
         return redirect('/anggota')->with('success', 'Data anggota berhasil diperbarui!');
     }
 
-    // 🔴 Hapus anggota
     public function destroy($id)
     {
         $anggota = json_decode(Storage::get($this->file), true);
