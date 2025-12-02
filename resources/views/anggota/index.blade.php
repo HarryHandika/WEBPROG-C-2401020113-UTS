@@ -17,17 +17,19 @@
       <tr><th>ID</th><th>Nama</th><th>Email</th><th>Aksi</th></tr>
     </thead>
     <tbody>
-      @foreach($anggota as $a)
-        <tr>
-          <td>{{ $a['id'] }}</td>
-          <td>{{ $a['nama'] }}</td>
-          <td>{{ $a['email'] }}</td>
-          <td>
-            <a href="/anggota/edit/{{ $a['id'] }}" class="btn btn-warning btn-sm">Edit</a>
-            <a href="/anggota/delete/{{ $a['id'] }}" class="btn btn-danger btn-sm" onclick="return confirm('Hapus anggota ini?')">Hapus</a>
-          </td>
-        </tr>
-      @endforeach
+      @if($anggota)
+        @foreach($anggota as $a)
+          <tr>
+            <td>{{ $a['id'] }}</td>
+            <td>{{ $a['nama'] }}</td>
+            <td>{{ $a['email'] }}</td>
+            <td>
+              <a href="/anggota/edit/{{ $a['id'] }}" class="btn btn-warning btn-sm">Edit</a>
+              <a href="/anggota/delete/{{ $a['id'] }}" class="btn btn-danger btn-sm" onclick="return confirm('Hapus anggota ini?')">Hapus</a>
+            </td>
+          </tr>
+        @endforeach
+      @endif
     </tbody>
   </table>
 </body>
