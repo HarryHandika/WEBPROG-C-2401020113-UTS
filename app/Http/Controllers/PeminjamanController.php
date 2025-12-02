@@ -26,7 +26,7 @@ class PeminjamanController extends Controller
     public function index()
     {
         $data = $this->readData();
-        return view('borrow.index', ['peminjaman' => $data]);
+        return view('peminjaman.index', ['peminjaman' => $data]);
     }
 
     public function store(Request $request)
