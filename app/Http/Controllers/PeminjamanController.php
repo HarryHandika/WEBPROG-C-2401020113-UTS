@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PeminjamanController extends Controller
 {
-    private $file = 'peminjaman.json';
+    private $file = 'data/peminjaman.json';
 
     private function readData()
     {
