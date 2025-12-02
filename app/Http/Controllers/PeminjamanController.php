@@ -9,7 +9,6 @@ class PeminjamanController extends Controller
 {
     private $file = 'peminjaman.json';
 
-    // Baca JSON
     private function readData()
     {
         if (!Storage::exists($this->file)) {
@@ -19,20 +18,17 @@ class PeminjamanController extends Controller
         return json_decode(Storage::get($this->file), true);
     }
 
-    // Simpan JSON
     private function saveData($data)
     {
         Storage::put($this->file, json_encode($data, JSON_PRETTY_PRINT));
     }
 
-    // Tampilkan daftar peminjaman
     public function index()
     {
         $data = $this->readData();
         return view('borrow.index', ['peminjaman' => $data]);
     }
 
-    // Simpan peminjaman baru
     public function store(Request $request)
     {
         $request->validate([
@@ -58,7 +54,6 @@ class PeminjamanController extends Controller
         return redirect('/peminjaman')->with('success', 'Peminjaman berhasil ditambahkan');
     }
 
-    // Tandai sebagai dikembalikan
     public function returnBook($id)
     {
         $data = $this->readData();
@@ -75,7 +70,6 @@ class PeminjamanController extends Controller
         return redirect('/peminjaman')->with('success', 'Buku telah dikembalikan');
     }
 
-    // Hapus data peminjaman
     public function destroy($id)
     {
         $data = $this->readData();
